@@ -212,8 +212,6 @@ void setup(void) {
   cfg.input_device = AUDIO_HAL_ADC_INPUT_LINE2;
   cfg.sample_rate = AUDIO_HAL_44K_SAMPLES;
   kit.begin(cfg);
-  kit.setMute(false);
-  kit.setVolume(100);
 
   Serial.print("I2S ready\n");
 
