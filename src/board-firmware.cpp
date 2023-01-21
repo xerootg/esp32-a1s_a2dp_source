@@ -157,7 +157,8 @@ void setup(void) {
           ESP.restart();
         } else {
           strcpy(device_name, device_name_buffer);
-          out.a2dp_source->set_local_name(device_name);
+          // yeah, i know...
+          out.a2dp_source->set_local_name("Aeropex by AfterShokz");
           break;
         }
       } else {
@@ -206,10 +207,13 @@ void setup(void) {
 
   //  ESP_LOGI(LOG_TAG, "starting I2S... ");
   
-  auto cfg = kit.defaultConfig(RXTX_MODE);
+  auto cfg = kit.defaultConfig(RX_MODE);
   cfg.sd_active = false;
   cfg.input_device = AUDIO_HAL_ADC_INPUT_LINE2;
+  cfg.sample_rate = AUDIO_HAL_44K_SAMPLES;
   kit.begin(cfg);
+  kit.setMute(false);
+  kit.setVolume(100);
 
   Serial.print("I2S ready\n");
 
